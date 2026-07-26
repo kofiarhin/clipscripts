@@ -60,9 +60,8 @@ describe("TranscriptPage", () => {
 
   test("copies the complete transcript", async () => {
     mockApiSuccess(transcript);
-    const writeText = vi.fn().mockResolvedValue(undefined);
-    Object.defineProperty(navigator, "clipboard", { configurable: true, value: { writeText } });
     const user = userEvent.setup();
+    const writeText = vi.spyOn(navigator.clipboard, "writeText").mockResolvedValue(undefined);
     renderPage();
 
     await screen.findByText("Hello React world. React makes interfaces.");
