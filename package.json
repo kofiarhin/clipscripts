@@ -1,0 +1,15 @@
+{
+  "name": "clipscripts",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": ["apps/client", "apps/server"],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "dev:client": "npm run dev --workspace @clipscripts/client",
+    "dev:server": "npm run dev --workspace @clipscripts/server",
+    "build": "npm run build --workspace @clipscripts/client",
+    "test": "npm test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "devDependencies": {"concurrently": "^9.2.1"}
+}
