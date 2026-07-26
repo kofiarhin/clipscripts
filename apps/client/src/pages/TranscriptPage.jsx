@@ -43,6 +43,7 @@ export default function TranscriptPage() {
       language: "en",
     }, { signal }),
     retry: (failureCount, error) => failureCount < 1 && Number(error?.status) >= 500,
+    retryDelay: 100,
   });
 
   useEffect(() => {
