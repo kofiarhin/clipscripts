@@ -1,15 +1,22 @@
 {
   "name": "clipscripts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "workspaces": ["apps/client", "apps/server"],
+  "engines": {
+    "node": ">=20.19.0",
+    "npm": ">=10.0.0"
+  },
   "scripts": {
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "npm run dev --workspace @clipscripts/client",
     "dev:server": "npm run dev --workspace @clipscripts/server",
     "build": "npm run build --workspace @clipscripts/client",
     "test": "npm test --workspaces --if-present",
-    "lint": "npm run lint --workspaces --if-present"
+    "lint": "npm run lint --workspaces --if-present",
+    "check": "npm run lint && npm test && npm run build"
   },
-  "devDependencies": {"concurrently": "^9.2.1"}
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
 }
