@@ -5,7 +5,14 @@ export default [
   { ignores: ["coverage"] },
   {
     files: ["**/*.js"],
-    languageOptions: { ecmaVersion: 2022, sourceType: "module", globals: { ...globals.node, ...globals.jest } },
-    rules: { ...js.configs.recommended.rules },
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "module",
+      globals: { ...globals.node, ...globals.jest },
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+    },
   },
 ];
