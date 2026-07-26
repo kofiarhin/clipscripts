@@ -2,11 +2,9 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react(), tailwindcss()],
-  esbuild: {
-    jsx: "automatic",
-  },
+  ...(mode === "test" ? { esbuild: { jsx: "automatic" } } : {}),
   server: {
     proxy: {
       "/api": {
@@ -20,4 +18,4 @@ export default defineConfig({
     setupFiles: "./src/test/setup.js",
     restoreMocks: true,
   },
-});
+}));
