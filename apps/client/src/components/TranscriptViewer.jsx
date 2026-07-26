@@ -98,10 +98,15 @@ export default function TranscriptViewer({ transcript }) {
           </ViewButton>
         </div>
 
-        <p className="sr-only" aria-live="polite">
-          {feedback}
-        </p>
-        {feedback && <div className="rounded-xl bg-indigo-50 px-4 py-3 text-sm text-indigo-900">{feedback}</div>}
+        {feedback && (
+          <div
+            role="status"
+            aria-live="polite"
+            className="rounded-xl bg-indigo-50 px-4 py-3 text-sm text-indigo-900"
+          >
+            {feedback}
+          </div>
+        )}
 
         {view === "full" ? (
           <article className="transcript-copy" data-testid="full-transcript">
